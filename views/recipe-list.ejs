@@ -1,0 +1,30 @@
+<h2><%= recipeList.get('name') %></h2>
+
+<ul>
+  <% for(let index = 0; index < recipes.length; index++){ %>
+    <% let recipe = recipes[index] %>
+    <li>
+      <%= recipe.get('ingredients') %>
+      <form
+      action="/recipe-list/<%= recipeList.get('id') %>/recipe/<%= recipes[index].get('id') %>/delete"
+      method="post"
+      >
+      <input type='submit' value='remove' />
+    </form>
+    </li>
+
+  <% } %>
+</ul>
+
+<div>
+  <h3>Add Ingredients</h3>
+  <form
+    action="/recipe-list/<%= recipeList.get('id') %>/recipe/new"
+    method="post"
+  >
+    <input type='text' name='ingredients' />
+    <input type='submit' value='New Ingredient' />
+  </form>
+</div>
+
+<a href="/">Back</a>
